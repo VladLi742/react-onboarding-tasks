@@ -1,6 +1,6 @@
+import { hot } from 'react-hot-loader/root';
 import * as React from "react";
 import { useState, useCallback } from "react";
-import { hot } from 'react-hot-loader';
 import { debounce } from "lodash";
 
 import GlobalStyles from "./globalStyles";
