@@ -1,5 +1,7 @@
-import React from "react";
+import * as React from 'react'
 import styled from "styled-components";
+
+import { TableProps } from "../interfaces";
 
 const Table = styled.table`
   width: 100%;
@@ -12,7 +14,7 @@ const TR = styled.tr`
   }
 `;
 
-export default function(props) {
+export default function Func(props: TableProps) {
     return (
         <Table>
             <thead>
@@ -24,7 +26,7 @@ export default function(props) {
             <tbody>
                 {props.repos.map((repo) => {
                     return (
-                        <TR>
+                        <TR key={repo.id}>
                             <td>{repo.id}</td>
                             <td>{repo.name}</td>
                         </TR>
