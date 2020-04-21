@@ -1,0 +1,12 @@
+# dependencies
+/node_modules
+
+# production
+/public
+
+# ide
+.idea/
+
+# errors
+npm-debug.log
+yarn-error.log

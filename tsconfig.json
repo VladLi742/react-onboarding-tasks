@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "outDir": "./public/",
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "module": "esnext",
+    "target": "ESNext",
+    "jsx": "react",
+    "allowJs": true,
+    "strict": true
+  },
+  "include": [
+    "./src/"
+  ]
+}
