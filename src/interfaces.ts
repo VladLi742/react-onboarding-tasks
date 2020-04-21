@@ -1,13 +1,13 @@
 export interface TableProps {
-    repos: Repo[],
+  repos: Repo[];
 }
 
 export interface SearchBarProps {
-    callback: Function,
-    ref?: any,
+  callback: Function;
+  ref?: any;
 }
 
 export interface Repo {
-    id: number,
-    name: string,
+  id: number;
+  name: string;
 }
