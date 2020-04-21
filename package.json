@@ -33,6 +33,7 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
+    "@babel/preset-typescript": "^7.9.0",
     "@hot-loader/react-dom": "^16.13.0",
     "lodash": "^4.17.15",
     "react": "^16.13.1",
