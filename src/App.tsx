@@ -15,12 +15,15 @@ function App() {
     []
   );
 
-  function fetchRepos(query: string) {
+  async function fetchRepos(query: string) {
     const url = `https://api.github.com/search/repositories?q=${query}`;
-    fetch(url)
-      .then((res) => res.json())
-      .then((result) => setRepos(result.items))
-      .catch((error) => console.log(error));
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      setRepos(data.items);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (

@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import regeneratorRuntime from "regenerator-runtime";
 import React from "react";
 import ReactDOM from "react-dom";
 
