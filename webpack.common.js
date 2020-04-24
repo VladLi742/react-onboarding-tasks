@@ -1,4 +1,5 @@
 const path = require("path");
+const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
@@ -37,6 +38,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./src/index.html",
       favicon: "./src/favicon.png",
+    }),
+    new webpack.DefinePlugin({
+      API_HOST: JSON.stringify("http://127.0.0.1:8080/api/"),
     }),
   ],
   optimization: {

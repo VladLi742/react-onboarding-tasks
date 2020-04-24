@@ -9,7 +9,7 @@ import {
 } from "./modules/list";
 
 function* fetchOrders() {
-  const url = "http://127.0.0.1:8080/api/order";
+  const url = `${API_HOST}order`;
   try {
     const response = yield fetch(url);
     const data = yield response.json();
@@ -20,7 +20,7 @@ function* fetchOrders() {
 }
 
 function* fetchOrderItem(action) {
-  const url = `http://127.0.0.1:8080/api/order/${action.id}`;
+  const url = `${API_HOST}order/${action.id}`;
   try {
     const response = yield fetch(url);
     const data = yield response.json();
