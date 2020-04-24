@@ -5,9 +5,11 @@ import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
 import rootSaga from "./sagas";
+import { reducer as filter } from "./modules/filter";
 import { reducer as list } from "./modules/list";
 
 const rootReducer = combineReducers({
+  filter,
   list,
 });
 

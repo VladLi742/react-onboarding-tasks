@@ -1,13 +1,23 @@
 // ----- State -----
 
 export interface AppState {
+  filter: FilterState;
   list: ListState;
+}
+
+export interface FilterState {
+  value: string;
 }
 
 export interface ListState {
   orders: Order[];
   itemsArr: Items[];
   isFetchedOrders: boolean;
+}
+
+export interface ChangeFilterAction {
+  readonly type: string;
+  value: string;
 }
 
 // ----- Order -----

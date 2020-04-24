@@ -6,6 +6,7 @@ import { hot } from "react-hot-loader/root";
 import { store, persistor } from "./redux/store";
 
 import GlobalStyles from "./globalStyles";
+import Filter from "./components/Filter";
 import List from "./components/List";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <PersistGate loading={null} persistor={persistor}>
         <React.StrictMode>
           <GlobalStyles />
+          <Filter />
           <List />
         </React.StrictMode>
       </PersistGate>

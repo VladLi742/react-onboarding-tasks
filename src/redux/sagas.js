@@ -1,4 +1,4 @@
-import { put, takeLatest, all } from "redux-saga/effects";
+import { select, put, takeLatest, all } from "redux-saga/effects";
 import {
   FETCH_ORDERS,
   FETCH_ORDERS_SUCCESS,
@@ -9,7 +9,9 @@ import {
 } from "./modules/list";
 
 function* fetchOrders() {
-  const url = `${API_HOST}order`;
+  const { value } = yield select((state) => state.filter);
+  const filter = value ? `?filter=${value}` : "";
+  const url = `${API_HOST}order${filter}`;
   try {
     const response = yield fetch(url);
     const data = yield response.json();
