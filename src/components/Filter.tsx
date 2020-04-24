@@ -22,5 +22,7 @@ export default function Filter() {
     callback();
   };
 
-  return <TextField onChange={handleChange} value={value} />;
+  return (
+    <TextField onChange={handleChange} label="Фильтр заказов" value={value} />
+  );
 }
