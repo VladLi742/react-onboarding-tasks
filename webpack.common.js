@@ -1,6 +1,6 @@
-const path = require('path');
+const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.js",
@@ -11,43 +11,44 @@ module.exports = {
   module: {
     rules: [
       {
-        enforce: 'pre',
+        enforce: "pre",
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        loader: 'eslint-loader',
+        loader: "eslint-loader",
       },
       {
         test: /\.(ts|js)x?$/,
         exclude: /node_modules/,
         loader: "babel-loader",
-        options: { presets: ["@babel/env"] }
+        options: { presets: ["@babel/env"] },
       },
       {
         test: /\.tsx?$/,
-        use: 'ts-loader',
+        use: "ts-loader",
         exclude: /node_modules/,
       },
-    ]
+    ],
   },
   resolve: {
-    extensions: [ '.tsx', '.ts', '.jsx', '.js' ],
+    extensions: [".tsx", ".ts", ".jsx", ".js"],
   },
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: "./src/index.html",
-    })
+      favicon: "./src/favicon.png",
+    }),
   ],
   optimization: {
-    runtimeChunk: 'single',
+    runtimeChunk: "single",
     splitChunks: {
       name: false,
-      chunks: 'all',
+      chunks: "all",
       cacheGroups: {
         vendor: {
           test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
-          chunks: 'all',
+          name: "vendors",
+          chunks: "all",
         },
       },
     },
