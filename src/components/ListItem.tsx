@@ -12,7 +12,7 @@ import { ExpandLess, ExpandMore } from "@material-ui/icons";
 
 import { FETCH_ORDER_ITEM } from "../redux/modules/list";
 
-import { AppState, Order, OrderItem } from "../ts/interfaces";
+import { AppState, Order, Item, Items } from "../ts/interfaces";
 
 interface ListItemProps {
   order: Order;
@@ -22,8 +22,10 @@ export default function ListItem(props: ListItemProps) {
   const { order } = props;
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
-  const { orderItems } = useSelector((state: AppState) => state.list);
-  const items = orderItems.find((item: OrderItem) => item.orderId === order.id);
+  const { itemsArr } = useSelector((state: AppState) => state.list);
+  const items: Items | undefined = itemsArr.find(
+    (items) => items.orderId === order.id
+  );
 
   const handleOpen = () => {
     if (!items) {
@@ -47,7 +49,7 @@ export default function ListItem(props: ListItemProps) {
       </ListItemMaterial>
       <Collapse in={open} timeout="auto" unmountOnExit>
         {items &&
-          items.map((item: OrderItem) => {
+          items.items.map((item: Item) => {
             return (
               <List component="div" disablePadding key={item.id}>
                 <ListItemMaterial button divider>

@@ -23,8 +23,10 @@ function* fetchOrderItem(action) {
   const url = `${API_HOST}order/${action.id}`;
   try {
     const response = yield fetch(url);
-    const data = yield response.json();
-    data.orderId = action.id;
+    const data = {
+      orderId: action.id,
+      items: yield response.json(),
+    };
     yield put({ type: FETCH_ORDER_ITEM_SUCCESS, payload: data });
   } catch (error) {
     yield put({ type: FETCH_ORDER_ITEM_FAIL, error });

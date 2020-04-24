@@ -5,6 +5,7 @@ import {
   ListState,
   FetchOrdersSuccessAction,
   FetchOrderItemSuccessAction,
+  Items,
 } from "../ts/interfaces";
 
 function setOrdersSuccess(state: ListState, action: FetchOrdersSuccessAction) {
@@ -19,13 +20,13 @@ function setOrderItemSuccess(
   action: FetchOrderItemSuccessAction
 ) {
   const newState = clone(state);
-  const notFetched = newState.orderItems.length
-    ? newState.orderItems.find(
-        (items) => items.orderId !== action.payload.orderId
+  const notFetched = newState.itemsArr.length
+    ? newState.itemsArr.find(
+        (items: Items) => items.orderId !== action.payload.orderId
       )
     : true;
   if (notFetched) {
-    newState.orderItems = [...newState.orderItems, action.payload];
+    newState.itemsArr = [...newState.itemsArr, action.payload];
   }
   return updateObject(state, newState);
 }

@@ -1,4 +1,4 @@
-import { ListState, Order, OrderItem } from "../../ts/interfaces";
+import { ListState, Order, Item, Items } from "../../ts/interfaces";
 import { InferValueTypes } from "../../ts/customTypes";
 
 import { updateObject } from "../../utils/functions";
@@ -34,7 +34,7 @@ export const fetchOrderItem = (id: number) =>
     id,
   } as const);
 
-export const fetchOrderItemSuccess = (payload: OrderItem) =>
+export const fetchOrderItemSuccess = (payload: Items) =>
   ({
     type: FETCH_ORDER_ITEM_SUCCESS,
     payload,
@@ -48,7 +48,7 @@ export const fetchOrderItemFail = (error: Error) =>
 
 const initialState: ListState = {
   orders: [],
-  orderItems: [],
+  itemsArr: [],
   isFetchedOrders: false,
 };
 

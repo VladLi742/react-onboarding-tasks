@@ -6,7 +6,7 @@ export interface AppState {
 
 export interface ListState {
   orders: Order[];
-  orderItems: OrderItem[];
+  itemsArr: Items[];
   isFetchedOrders: boolean;
 }
 
@@ -24,18 +24,22 @@ export interface FetchOrdersSuccessAction {
   payload: Order[];
 }
 
-// ----- OrderItem -----
+// ----- Item -----
 
-export interface OrderItem {
+export interface Item {
   id: number;
   name: string;
   price: number;
   qty: number;
   sum: number;
+}
+
+export interface Items {
+  items: Item[];
   orderId: number;
 }
 
 export interface FetchOrderItemSuccessAction {
   readonly type: string;
-  payload: OrderItem;
+  payload: Items;
 }
