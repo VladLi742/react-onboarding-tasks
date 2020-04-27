@@ -1,15 +1,14 @@
-import { ListState, Order, Item, Items } from "../../ts/interfaces";
+import { Order, OrderItems } from "../../ts/interfaces";
 import { InferValueTypes } from "../../ts/customTypes";
 
-import { updateObject } from "../../utils/functions";
-import { setOrdersSuccess, setOrderItemSuccess } from "../../utils/list";
+import { setOrdersSuccess, setOrderItemSuccess } from "../../utils/table";
 
-export const FETCH_ORDERS = "orders/list/FETCH_ORDERS";
-export const FETCH_ORDERS_SUCCESS = "orders/list/FETCH_ORDERS:SUCCESS";
-export const FETCH_ORDERS_FAIL = "orders/list/FETCH_ORDERS:FAIL";
-export const FETCH_ORDER_ITEM = "orders/list/FETCH_ORDER_ITEM";
-export const FETCH_ORDER_ITEM_SUCCESS = "orders/list/FETCH_ORDER_ITEM:SUCCESS";
-export const FETCH_ORDER_ITEM_FAIL = "orders/list/FETCH_ORDER_ITEM:FAIL";
+export const FETCH_ORDERS = "orders/table/FETCH_ORDERS";
+export const FETCH_ORDERS_SUCCESS = "orders/table/FETCH_ORDERS:SUCCESS";
+export const FETCH_ORDERS_FAIL = "orders/table/FETCH_ORDERS:FAIL";
+export const FETCH_ORDER_ITEM = "orders/table/FETCH_ORDER_ITEM";
+export const FETCH_ORDER_ITEM_SUCCESS = "orders/table/FETCH_ORDER_ITEM:SUCCESS";
+export const FETCH_ORDER_ITEM_FAIL = "orders/table/FETCH_ORDER_ITEM:FAIL";
 
 export const fetchOrders = () =>
   ({
@@ -34,7 +33,7 @@ export const fetchOrderItem = (id: number) =>
     id,
   } as const);
 
-export const fetchOrderItemSuccess = (payload: Items) =>
+export const fetchOrderItemSuccess = (payload: OrderItems) =>
   ({
     type: FETCH_ORDER_ITEM_SUCCESS,
     payload,
@@ -46,10 +45,8 @@ export const fetchOrderItemFail = (error: Error) =>
     error,
   } as const);
 
-const initialState: ListState = {
+const initialState: any = {
   orders: [],
-  itemsArr: [],
-  isFetchedOrders: false,
 };
 
 const actions = {
@@ -66,17 +63,13 @@ type Action = ReturnType<InferValueTypes<typeof actions>>;
 export const reducer = (state = initialState, action: Action) => {
   switch (action.type) {
     case FETCH_ORDERS:
-      return updateObject(state, action);
+      return state;
     case FETCH_ORDERS_SUCCESS:
       return setOrdersSuccess(state, action);
-    case FETCH_ORDERS_FAIL:
-      return updateObject(state, action);
     case FETCH_ORDER_ITEM:
-      return updateObject(state, action);
+      return state;
     case FETCH_ORDER_ITEM_SUCCESS:
       return setOrderItemSuccess(state, action);
-    case FETCH_ORDER_ITEM_FAIL:
-      return updateObject(state, action);
     default:
       return state;
   }

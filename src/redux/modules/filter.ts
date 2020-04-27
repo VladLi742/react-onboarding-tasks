@@ -5,14 +5,15 @@ import { change } from "../../utils/filter";
 
 export const CHANGE_FILTER = "orders/filter/CHANGE_FILTER";
 
-export const changeFilter = (value: string) =>
+export const changeFilter = (id: number, value: string) =>
   ({
     type: CHANGE_FILTER,
+    id,
     value,
   } as const);
 
 const initialState: FilterState = {
-  value: "",
+  instances: [],
 };
 
 const actions = {

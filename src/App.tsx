@@ -1,13 +1,15 @@
+import { hot } from "react-hot-loader/root";
 import * as React from "react";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
-import { hot } from "react-hot-loader/root";
 import { Container } from "@material-ui/core";
 
 import { store, persistor } from "./redux/store";
 
 import GlobalStyles from "./globalStyles";
-import List from "./components/List";
+
+import FilterOrders from "./components/FilterOrders";
+import OrdersTable from "./components/OrdersTable";
 
 function App() {
   return (
@@ -16,7 +18,8 @@ function App() {
         <React.StrictMode>
           <GlobalStyles />
           <Container>
-            <List />
+            <FilterOrders />
+            <OrdersTable />
           </Container>
         </React.StrictMode>
       </PersistGate>

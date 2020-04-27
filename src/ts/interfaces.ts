@@ -2,22 +2,35 @@
 
 export interface AppState {
   filter: FilterState;
-  list: ListState;
+  table: TableState;
 }
+
+// ----- Filter -----
 
 export interface FilterState {
-  value: string;
+  instances: FilterInstance[];
 }
 
-export interface ListState {
-  orders: Order[];
-  itemsArr: Items[];
-  isFetchedOrders: boolean;
+export interface FilterInstance {
+  id: number;
+  value: string;
 }
 
 export interface ChangeFilterAction {
   readonly type: string;
+  id: number;
   value: string;
+}
+
+// ----- Table -----
+
+export interface TableState {
+  instances: TableInstance[];
+}
+
+export interface TableInstance {
+  id: number;
+  text: string;
 }
 
 // ----- Order -----
@@ -36,7 +49,7 @@ export interface FetchOrdersSuccessAction {
 
 // ----- Item -----
 
-export interface Item {
+export interface OrderItem {
   id: number;
   name: string;
   price: number;
@@ -44,12 +57,12 @@ export interface Item {
   sum: number;
 }
 
-export interface Items {
-  items: Item[];
+export interface OrderItems {
   orderId: number;
+  items: OrderItem[];
 }
 
 export interface FetchOrderItemSuccessAction {
   readonly type: string;
-  payload: Items;
+  payload: OrderItems;
 }

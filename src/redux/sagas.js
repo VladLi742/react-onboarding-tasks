@@ -6,11 +6,13 @@ import {
   FETCH_ORDER_ITEM,
   FETCH_ORDER_ITEM_SUCCESS,
   FETCH_ORDER_ITEM_FAIL,
-} from "./modules/list";
+} from "./modules/table";
 
 function* fetchOrders() {
-  const { value } = yield select((state) => state.filter);
-  const filter = value ? `?filter=${value}` : "";
+  const filterInstance = yield select((state) =>
+    state.filter.instances.find((instance) => instance.id === "filter-orders")
+  );
+  const filter = filterInstance ? `?filter=${filterInstance.value}` : "";
   const url = `${API_HOST}order${filter}`;
   try {
     const response = yield fetch(url);
