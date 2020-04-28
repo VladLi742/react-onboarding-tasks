@@ -1,23 +1,38 @@
 import { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { fetchOrders, fetchOrderItem } from "../redux/modules/table";
+import { toggleRow } from "./redux/modules/table";
+import { fetchOrders, fetchOrderItem } from "../redux/modules/tableOrders";
 
-export function useFetchOrders() {
+import { AppState } from "../ts/interfaces";
+
+export function useFetchOrders(id: string) {
   const dispatch = useDispatch();
-  const { orders } = useSelector((state: any) => state.table);
+  const instance = useSelector((state: AppState) =>
+    state.table.instances.find((instance) => instance.id === id)
+  );
 
   useEffect(() => {
-    if (!orders.length) {
-      dispatch(fetchOrders());
-    }
-  }, [dispatch, orders]);
+    if (!instance) dispatch(fetchOrders(id));
+  }, [dispatch, instance, id]);
 
-  return orders;
+  return instance;
 }
 
-export function useFetchOrderItem(id: number) {
+export function useFetchOrderItem(id: string, orderId: number) {
   const dispatch = useDispatch();
 
-  return useCallback(() => dispatch(fetchOrderItem(id)), [dispatch, id]);
+  return useCallback(() => {
+    dispatch(fetchOrderItem(id, orderId));
+  }, [dispatch, id, orderId]);
+}
+
+export function useToggleRow(id: string, rowId: number) {
+  const dispatch = useDispatch();
+
+  return useCallback(() => dispatch(toggleRow(id, rowId)), [
+    dispatch,
+    id,
+    rowId,
+  ]);
 }

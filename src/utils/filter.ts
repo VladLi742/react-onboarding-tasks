@@ -1,16 +1,14 @@
-import { clone } from "lodash";
+import { cloneDeep } from "lodash";
 
 import { updateObject } from "./functions";
 import { FilterState, ChangeFilterAction } from "../ts/interfaces";
 
 function change(state: FilterState, action: ChangeFilterAction) {
   const { id, value } = action;
-  const newState = clone(state);
+  const newState = cloneDeep(state);
   if (newState.instances.length) {
     const filter = newState.instances.find((instance) => instance.id === id);
-    if (filter) {
-      filter.value = value;
-    }
+    if (filter) filter.value = value;
   } else {
     newState.instances.push({ id, value });
   }

@@ -1,39 +1,66 @@
-import { clone } from "lodash";
+import { cloneDeep } from "lodash";
 
-import { updateObject } from "./functions";
 import {
+  TableState,
+  InitializeAction,
+  ToggleRowAction,
   FetchOrdersSuccessAction,
-  FetchOrderItemSuccessAction,
 } from "../ts/interfaces";
 
-function setOrdersSuccess(state: any, action: FetchOrdersSuccessAction) {
-  const newState = clone(state);
-  newState.orders = action.payload.map((order) => {
+import { updateObject } from "./functions";
+
+function initialize(state: TableState, action: InitializeAction) {
+  const newState = cloneDeep(state);
+  newState.instances.push({ id: action.id, rows: [] });
+  return updateObject(state, newState);
+}
+
+function toggle(state: TableState, action: ToggleRowAction) {
+  const newState = cloneDeep(state);
+  const instance = newState.instances.find(
+    (instance) => instance.id === action.id
+  );
+  if (instance) {
+    const row = instance.rows.find((row) => row.id === action.rowId);
+    if (row) row.isOpen = !row.isOpen;
+  }
+  return updateObject(state, newState);
+}
+
+function setOrdersSuccess(state: TableState, action: FetchOrdersSuccessAction) {
+  const newState = cloneDeep(state);
+  const rows = action.payload.map((order) => {
     const { id, docDate, docNum, description } = order;
     return {
       id,
       arr: [
-        { id: 1, text: docNum },
-        { id: 2, text: docDate },
-        { id: 3, text: description },
+        { id: 1, text: docNum.toString() },
+        { id: 2, text: docDate.toString() },
+        { id: 3, text: description.toString() },
       ],
+      isOpen: false,
     };
   });
+  const instance = newState.instances.find(
+    (instance) => instance.id === action.id
+  );
+  if (instance) instance.rows = rows;
   return updateObject(state, newState);
 }
 
-function setOrderItemSuccess(state: any, action: FetchOrderItemSuccessAction) {
-  const newState = clone(state);
-  const index = newState.orders.length
-    ? newState.orders.findIndex(
-        (order: any) => order.id === action.payload.orderId
-      )
-    : true;
-  if (index) {
-    newState.orders[index].items = action.payload.items.map((item: any) => {
-      const { name, price, qty, sum } = item;
+function setOrderItemSuccess(state: TableState, action: any) {
+  const newState = cloneDeep(state);
+  const instance = newState.instances.find(
+    (instance) => instance.id === action.id
+  );
+  if (instance) {
+    const { orderId, items } = action.payload;
+    const index = instance.rows.findIndex((order: any) => order.id === orderId);
+    instance.rows[index].items = items.map((item: any) => {
+      const { id, name, price, qty, sum } = item;
       return {
-        orderId: action.payload.orderId,
+        id,
+        orderId,
         arr: [
           { id: 1, text: name },
           { id: 2, text: qty },
@@ -46,4 +73,4 @@ function setOrderItemSuccess(state: any, action: FetchOrderItemSuccessAction) {
   return updateObject(state, newState);
 }
 
-export { setOrdersSuccess, setOrderItemSuccess };
+export { initialize, toggle, setOrdersSuccess, setOrderItemSuccess };

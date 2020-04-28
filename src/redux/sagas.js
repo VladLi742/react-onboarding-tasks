@@ -1,14 +1,16 @@
 import { select, put, takeLatest, all } from "redux-saga/effects";
+
 import {
   FETCH_ORDERS,
-  FETCH_ORDERS_SUCCESS,
-  FETCH_ORDERS_FAIL,
+  fetchOrdersSuccess,
+  fetchOrderItemFail,
   FETCH_ORDER_ITEM,
-  FETCH_ORDER_ITEM_SUCCESS,
-  FETCH_ORDER_ITEM_FAIL,
-} from "./modules/table";
+  fetchOrderItemSuccess,
+  fetchOrdersFail,
+} from "./modules/tableOrders";
 
-function* fetchOrders() {
+function* fetchOrders(action) {
+  const { id } = action;
   const filterInstance = yield select((state) =>
     state.filter.instances.find((instance) => instance.id === "filter-orders")
   );
@@ -17,23 +19,21 @@ function* fetchOrders() {
   try {
     const response = yield fetch(url);
     const data = yield response.json();
-    yield put({ type: FETCH_ORDERS_SUCCESS, payload: data });
+    yield put(fetchOrdersSuccess(id, data));
   } catch (error) {
-    yield put({ type: FETCH_ORDERS_FAIL, error });
+    yield put(fetchOrdersFail(error));
   }
 }
 
 function* fetchOrderItem(action) {
-  const url = `${API_HOST}order/${action.id}`;
+  const { id, orderId } = action;
+  const url = `${API_HOST}order/${orderId}`;
   try {
     const response = yield fetch(url);
-    const data = {
-      orderId: action.id,
-      items: yield response.json(),
-    };
-    yield put({ type: FETCH_ORDER_ITEM_SUCCESS, payload: data });
+    const data = { orderId, items: yield response.json() };
+    yield put(fetchOrderItemSuccess(id, data));
   } catch (error) {
-    yield put({ type: FETCH_ORDER_ITEM_FAIL, error });
+    yield put(fetchOrderItemFail(error));
   }
 }
 

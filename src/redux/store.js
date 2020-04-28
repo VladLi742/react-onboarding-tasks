@@ -5,8 +5,8 @@ import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
 import rootSaga from "./sagas";
-import { reducer as filter } from "./modules/filter";
-import { reducer as table } from "./modules/table";
+import { reducer as filter } from "../utils/redux/modules/filter";
+import { reducer as table } from "../utils/redux/modules/table";
 
 const rootReducer = combineReducers({
   filter,

@@ -12,13 +12,13 @@ export interface FilterState {
 }
 
 export interface FilterInstance {
-  id: number;
+  id: string;
   value: string;
 }
 
 export interface ChangeFilterAction {
   readonly type: string;
-  id: number;
+  id: string;
   value: string;
 }
 
@@ -29,8 +29,46 @@ export interface TableState {
 }
 
 export interface TableInstance {
+  id: string;
+  rows: TableRowData[];
+}
+
+export interface TableUIData {
   id: number;
   text: string;
+}
+
+export interface TableRowData {
+  id: number;
+  arr: TableUIData[];
+  isOpen: boolean;
+  items?: TableItemUiData;
+}
+
+export interface TableItemUiData {
+  id: number;
+  orderId: number;
+  arr: TableUIData[];
+}
+
+export interface TableProps {
+  id: string;
+  headers: TableUIData[];
+  subHeaders: TableUIData[];
+  data: TableInstance;
+  type: string;
+  isExpandable: boolean;
+}
+
+export interface InitializeAction {
+  readonly type: string;
+  id: string;
+}
+
+export interface ToggleRowAction {
+  readonly type: string;
+  id: string;
+  rowId: number;
 }
 
 // ----- Order -----
@@ -44,10 +82,11 @@ export interface Order {
 
 export interface FetchOrdersSuccessAction {
   readonly type: string;
+  id: string;
   payload: Order[];
 }
 
-// ----- Item -----
+// ----- OrderItem -----
 
 export interface OrderItem {
   id: number;
@@ -64,5 +103,6 @@ export interface OrderItems {
 
 export interface FetchOrderItemSuccessAction {
   readonly type: string;
+  id: string;
   payload: OrderItems;
 }

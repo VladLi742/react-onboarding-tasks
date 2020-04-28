@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import {
   Table,
   TableHead,
@@ -9,24 +9,25 @@ import {
 } from "@material-ui/core";
 import { ExpandLess, ExpandMore } from "@material-ui/icons";
 
-import { randomKey } from "../functions";
+import { TableUIData, TableItemUiData } from "../../ts/interfaces";
 
-import { useFetchOrderItem } from "../useHooks";
+import { useFetchOrderItem, useToggleRow } from "../useHooks";
 
 export default function TableRow(props: any) {
-  const { subHeaders, row, type, isExpandable } = props;
-  const [isOpen, setOpen] = useState(false);
-  const fetchOrderItem = useFetchOrderItem(row.id);
+  const { tableId, subHeaders, row, type, isExpandable } = props;
+  const { id, items, isOpen } = row;
+  const fetchOrderItem = useFetchOrderItem(tableId, id);
+  const toggleRow = useToggleRow(tableId, id);
 
   const handleOpen = () => {
-    setOpen(!isOpen);
+    toggleRow();
   };
 
   useEffect(() => {
-    if (type === "orders" && !row.items && isOpen) {
+    if (type === "orders" && !items && isOpen) {
       fetchOrderItem();
     }
-  }, [type, fetchOrderItem, row, row.items, isOpen]);
+  }, [type, fetchOrderItem, items, isOpen]);
 
   return (
     <>
@@ -36,10 +37,9 @@ export default function TableRow(props: any) {
             {isOpen ? <ExpandLess /> : <ExpandMore />}
           </TableCell>
         )}
-        {row.arr.length &&
-          row.arr.map((cell: any) => (
-            <TableCell key={randomKey()}>{cell.text}</TableCell>
-          ))}
+        {row.arr.map((cell: TableUIData) => (
+          <TableCell key={cell.id}>{cell.text}</TableCell>
+        ))}
       </TableRowMaterial>
       {row.items && isOpen && (
         <TableRowMaterial>
@@ -47,21 +47,22 @@ export default function TableRow(props: any) {
             <Table>
               <TableHead>
                 <TableRowMaterial>
-                  {subHeaders.map((subHeader: any) => {
+                  {subHeaders.map((subHeader: TableUIData) => {
                     return (
-                      <TableCell key={randomKey()}>{subHeader.text}</TableCell>
+                      <TableCell key={subHeader.id}>{subHeader.text}</TableCell>
                     );
                   })}
                 </TableRowMaterial>
               </TableHead>
               <TableBody>
-                {row.items.map((item: any) => {
+                {/*TODO: resolve // Argument type (item: TableItemUiData) => any*/}
+                {/*is not assignable to parameter type (value: JSONSchema4,*/}
+                {/*index: number, array: JSONSchema4[]) => any*/}
+                {row.items.map((item: TableItemUiData) => {
                   return (
-                    <TableRowMaterial key={randomKey()}>
-                      {item.arr.map((cell: any) => {
-                        return (
-                          <TableCell key={randomKey()}>{cell.text}</TableCell>
-                        );
+                    <TableRowMaterial key={item.id}>
+                      {item.arr.map((cell: TableUIData) => {
+                        return <TableCell key={cell.id}>{cell.text}</TableCell>;
                       })}
                     </TableRowMaterial>
                   );

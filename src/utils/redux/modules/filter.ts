@@ -1,11 +1,11 @@
-import { FilterState } from "../../ts/interfaces";
-import { InferValueTypes } from "../../ts/customTypes";
+import { FilterState } from "../../../ts/interfaces";
+import { InferValueTypes } from "../../../ts/customTypes";
 
-import { change } from "../../utils/filter";
+import { change } from "../../filter";
 
 export const CHANGE_FILTER = "orders/filter/CHANGE_FILTER";
 
-export const changeFilter = (id: number, value: string) =>
+export const changeFilter = (id: string, value: string) =>
   ({
     type: CHANGE_FILTER,
     id,

@@ -1,4 +1,5 @@
 import * as React from "react";
+import { LinearProgress } from "@material-ui/core";
 
 import { useFetchOrders } from "../utils/useHooks";
 
@@ -17,15 +18,19 @@ const subHeaders = [
   { id: 4, text: "Сумма" },
 ];
 
-export default function OrdersTable() {
-  const orders = useFetchOrders();
-  return (
+export default function TableOrders() {
+  const id = "table-orders";
+  const orders = useFetchOrders(id);
+  return orders ? (
     <Table
+      id={id}
       headers={headers}
       subHeaders={subHeaders}
-      rows={orders}
+      data={orders}
       type="orders"
       isExpandable
     />
+  ) : (
+    <LinearProgress />
   );
 }

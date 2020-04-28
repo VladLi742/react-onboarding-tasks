@@ -9,7 +9,7 @@ import { store, persistor } from "./redux/store";
 import GlobalStyles from "./globalStyles";
 
 import FilterOrders from "./components/FilterOrders";
-import OrdersTable from "./components/OrdersTable";
+import TableOrders from "./components/TableOrders";
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
           <GlobalStyles />
           <Container>
             <FilterOrders />
-            <OrdersTable />
+            <TableOrders />
           </Container>
         </React.StrictMode>
       </PersistGate>
