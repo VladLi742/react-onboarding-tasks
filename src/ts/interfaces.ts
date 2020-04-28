@@ -24,7 +24,7 @@ export interface ChangeFilterAction {
 
 export interface FilterProps {
   id: string;
-  value: string;
+  defaultValue?: string;
   label: string;
   onChange: Function;
 }

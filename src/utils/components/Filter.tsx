@@ -10,7 +10,7 @@ import { changeFilter } from "../redux/modules/filter";
 export default function Filter(props: FilterProps) {
   const {
     id: customId,
-    value: defaultValue,
+    defaultValue,
     label,
     onChange: onChangeCallback,
   } = props;
