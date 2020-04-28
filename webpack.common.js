@@ -32,6 +32,7 @@ module.exports = {
   },
   resolve: {
     extensions: [".tsx", ".ts", ".jsx", ".js"],
+    alias: { "react-dom": "@hot-loader/react-dom" },
   },
   plugins: [
     new CleanWebpackPlugin(),
