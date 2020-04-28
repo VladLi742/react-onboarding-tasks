@@ -9,11 +9,15 @@ import {
 } from "@material-ui/core";
 import { ExpandLess, ExpandMore } from "@material-ui/icons";
 
-import { TableUIData, TableItemUiData } from "../../ts/interfaces";
+import {
+  TableUIData,
+  TableItemUiData,
+  TableRowProps,
+} from "../../ts/interfaces";
 
 import { useFetchOrderItem, useToggleRow } from "../useHooks";
 
-export default function TableRow(props: any) {
+export default function TableRow(props: TableRowProps) {
   const { tableId, subHeaders, row, type, isExpandable } = props;
   const { id, items, isOpen } = row;
   const fetchOrderItem = useFetchOrderItem(tableId, id);

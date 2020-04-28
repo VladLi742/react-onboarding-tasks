@@ -5,6 +5,7 @@ import {
   InitializeAction,
   ToggleRowAction,
   FetchOrdersSuccessAction,
+  FetchOrderItemSuccessAction,
 } from "../ts/interfaces";
 
 import { updateObject } from "./functions";
@@ -48,24 +49,27 @@ function setOrdersSuccess(state: TableState, action: FetchOrdersSuccessAction) {
   return updateObject(state, newState);
 }
 
-function setOrderItemSuccess(state: TableState, action: any) {
+function setOrderItemSuccess(
+  state: TableState,
+  action: FetchOrderItemSuccessAction
+) {
   const newState = cloneDeep(state);
   const instance = newState.instances.find(
     (instance) => instance.id === action.id
   );
   if (instance) {
     const { orderId, items } = action.payload;
-    const index = instance.rows.findIndex((order: any) => order.id === orderId);
-    instance.rows[index].items = items.map((item: any) => {
+    const index = instance.rows.findIndex((order) => order.id === orderId);
+    instance.rows[index].items = items.map((item) => {
       const { id, name, price, qty, sum } = item;
       return {
         id,
         orderId,
         arr: [
           { id: 1, text: name },
-          { id: 2, text: qty },
-          { id: 3, text: price },
-          { id: 4, text: sum },
+          { id: 2, text: qty.toString() },
+          { id: 3, text: price.toString() },
+          { id: 4, text: sum.toString() },
         ],
       };
     });

@@ -22,6 +22,13 @@ export interface ChangeFilterAction {
   value: string;
 }
 
+export interface FilterProps {
+  id: string;
+  value: string;
+  label: string;
+  onChange: Function;
+}
+
 // ----- Table -----
 
 export interface TableState {
@@ -42,7 +49,7 @@ export interface TableRowData {
   id: number;
   arr: TableUIData[];
   isOpen: boolean;
-  items?: TableItemUiData;
+  items?: TableItemUiData[];
 }
 
 export interface TableItemUiData {
@@ -56,6 +63,14 @@ export interface TableProps {
   headers: TableUIData[];
   subHeaders: TableUIData[];
   data: TableInstance;
+  type: string;
+  isExpandable: boolean;
+}
+
+export interface TableRowProps {
+  tableId: string;
+  subHeaders: TableUIData[];
+  row: TableRowData;
   type: string;
   isExpandable: boolean;
 }
