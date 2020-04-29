@@ -1,6 +1,6 @@
 import { cloneDeep } from "lodash";
 
-import { updateObject } from "./functions";
+import { updateObject } from "@utils/functions";
 import {
   FilterState,
   InitializeFilterAction,

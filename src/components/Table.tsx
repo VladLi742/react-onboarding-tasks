@@ -9,7 +9,7 @@ import {
 
 import { TableProps, TableUIData, TableRowData } from "@ts/interfaces";
 
-import TableRow from "./TableRow";
+import TableRow from "@components/TableRow";
 
 export default function Table(props: TableProps) {
   const { id, headers, subHeaders, instance, type, isExpandable } = props;

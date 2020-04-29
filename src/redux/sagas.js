@@ -7,7 +7,7 @@ import {
   FETCH_ORDER_ITEM,
   fetchOrderItemSuccess,
   fetchOrdersFail,
-} from "./tableOrders";
+} from "@redux/tableOrders";
 
 function* fetchOrders(action) {
   const { id } = action;

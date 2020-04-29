@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { TableOrdersProps } from "@ts/interfaces";
 
-import Table from "./Table";
+import Table from "@components/Table";
 
 export default function TableOrders(props: TableOrdersProps) {
   const { id, headers, subHeaders, instance, type, isExpandable } = props;

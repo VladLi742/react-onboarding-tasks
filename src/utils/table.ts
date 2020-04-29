@@ -6,7 +6,7 @@ import {
   ToggleRowAction,
 } from "@ts/interfaces";
 
-import { updateObject } from "./functions";
+import { updateObject } from "@utils/functions";
 
 function initialize(state: TableState, action: InitializeTableAction) {
   const newState = cloneDeep(state);

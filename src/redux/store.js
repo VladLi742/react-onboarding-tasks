@@ -4,9 +4,9 @@ import { createLogger } from "redux-logger";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
-import rootSaga from "./sagas";
-import { reducer as filter } from "./filter";
-import { reducer as table } from "./table";
+import rootSaga from "@redux/sagas";
+import { reducer as filter } from "@redux/filter";
+import { reducer as table } from "@redux/table";
 
 const rootReducer = combineReducers({
   filter,

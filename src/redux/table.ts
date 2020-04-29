@@ -3,7 +3,7 @@ import {
   FETCH_ORDERS_SUCCESS,
   FETCH_ORDER_ITEM_SUCCESS,
   tableOrdersActions,
-} from "./tableOrders";
+} from "@redux/tableOrders";
 
 import { TableState } from "@ts/interfaces";
 import { InferValueTypes } from "@ts/customTypes";

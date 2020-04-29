@@ -7,7 +7,7 @@ import {
   FetchOrderItemSuccessAction,
 } from "@ts/interfaces";
 
-import { updateObject } from "./functions";
+import { updateObject } from "@utils/functions";
 
 export function fetchOrders(state: TableState, action: FetchOrdersAction) {
   const newState = cloneDeep(state);
