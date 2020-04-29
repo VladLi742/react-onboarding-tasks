@@ -6,7 +6,7 @@ import {
   ToggleRowAction,
   FetchOrdersSuccessAction,
   FetchOrderItemSuccessAction,
-} from "../ts/interfaces";
+} from "@ts/interfaces";
 
 import { updateObject } from "./functions";
 

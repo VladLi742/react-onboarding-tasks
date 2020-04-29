@@ -1,4 +1,4 @@
-import { Order, OrderItems } from "../../ts/interfaces";
+import { Order, OrderItems } from "@ts/interfaces";
 
 // --- FETCH_ORDERS ---
 

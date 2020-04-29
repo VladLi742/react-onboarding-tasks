@@ -9,13 +9,9 @@ import {
 } from "@material-ui/core";
 import { ExpandLess, ExpandMore } from "@material-ui/icons";
 
-import {
-  TableUIData,
-  TableItemUiData,
-  TableRowProps,
-} from "../../ts/interfaces";
+import { TableUIData, TableItemUiData, TableRowProps } from "@ts/interfaces";
 
-import { useFetchOrderItem, useToggleRow } from "../useHooks";
+import { useFetchOrderItem, useToggleRow } from "@utils/useHooks";
 
 export default function TableRow(props: TableRowProps) {
   const { tableId, subHeaders, row, type, isExpandable } = props;

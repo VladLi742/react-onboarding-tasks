@@ -1,10 +1,10 @@
 import { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { toggleRow } from "./redux/modules/table";
-import { fetchOrders, fetchOrderItem } from "../redux/modules/tableOrders";
+import { toggleRow } from "@redux/table";
+import { fetchOrders, fetchOrderItem } from "@redux/tableOrders";
 
-import { AppState } from "../ts/interfaces";
+import { AppState } from "@ts/interfaces";
 
 export function useFetchOrders(id: string) {
   const dispatch = useDispatch();

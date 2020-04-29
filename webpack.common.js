@@ -32,7 +32,13 @@ module.exports = {
   },
   resolve: {
     extensions: [".tsx", ".ts", ".jsx", ".js"],
-    alias: { "react-dom": "@hot-loader/react-dom" },
+    alias: {
+      "react-dom": "@hot-loader/react-dom",
+      "@components": path.resolve(__dirname, "src/components/"),
+      "@redux": path.resolve(__dirname, "src/redux/"),
+      "@ts": path.resolve(__dirname, "src/ts/"),
+      "@utils": path.resolve(__dirname, "src/utils/"),
+    },
   },
   plugins: [
     new CleanWebpackPlugin(),

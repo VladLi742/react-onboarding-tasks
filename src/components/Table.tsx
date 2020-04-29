@@ -7,7 +7,7 @@ import {
   TableCell,
 } from "@material-ui/core";
 
-import { TableProps, TableUIData, TableRowData } from "../../ts/interfaces";
+import { TableProps, TableUIData, TableRowData } from "@ts/interfaces";
 
 import TableRow from "./TableRow";
 

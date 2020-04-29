@@ -1,9 +1,9 @@
 import * as React from "react";
 import { LinearProgress } from "@material-ui/core";
 
-import { useFetchOrders } from "../utils/useHooks";
+import { useFetchOrders } from "@utils/useHooks";
 
-import Table from "../utils/components/Table";
+import Table from "./Table";
 
 const headers = [
   { id: 1, text: "Номер заказа" },

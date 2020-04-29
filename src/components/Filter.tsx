@@ -3,13 +3,9 @@ import { ChangeEvent, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { TextField } from "@material-ui/core";
 
-import { AppState, FilterProps } from "../../ts/interfaces";
+import { AppState, FilterProps } from "@ts/interfaces";
 
-import {
-  changeFilter,
-  initializeFilter,
-  showErrorFilter,
-} from "../redux/modules/filter";
+import { changeFilter, initializeFilter, showErrorFilter } from "@redux/filter";
 
 export default function Filter(props: FilterProps) {
   const {

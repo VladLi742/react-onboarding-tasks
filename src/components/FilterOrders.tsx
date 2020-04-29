@@ -3,9 +3,9 @@ import { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { debounce } from "lodash";
 
-import { fetchOrders } from "../redux/modules/tableOrders";
+import { fetchOrders } from "@redux/tableOrders";
 
-import Filter from "../utils/components/Filter";
+import Filter from "./Filter";
 
 const validationRules = {
   regExp: new RegExp(/^ord-\d*$/, "i"),

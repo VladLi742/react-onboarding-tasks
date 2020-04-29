@@ -4,12 +4,12 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { Container } from "@material-ui/core";
 
-import { store, persistor } from "./redux/store";
+import { store, persistor } from "@redux/store";
 
 import GlobalStyles from "./globalStyles";
 
-import FilterOrders from "./components/FilterOrders";
-import TableOrders from "./components/TableOrders";
+import FilterOrders from "@components/FilterOrders";
+import TableOrders from "@components/TableOrders";
 
 function App() {
   return (

@@ -1,7 +1,7 @@
-import { FilterState } from "../../../ts/interfaces";
-import { InferValueTypes } from "../../../ts/customTypes";
+import { FilterState } from "@ts/interfaces";
+import { InferValueTypes } from "@ts/customTypes";
 
-import { initialize, change, showError } from "../../filter";
+import { initialize, change, showError } from "@utils/filter";
 
 export const INITIALIZE_FILTER = "orders/filter/INITIALIZE_FILTER";
 export const CHANGE_FILTER = "orders/filter/CHANGE_FILTER";

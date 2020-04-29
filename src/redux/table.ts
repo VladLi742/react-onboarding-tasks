@@ -3,17 +3,17 @@ import {
   FETCH_ORDERS_SUCCESS,
   FETCH_ORDER_ITEM_SUCCESS,
   tableOrdersActions,
-} from "../../../redux/modules/tableOrders";
+} from "./tableOrders";
 
-import { TableState } from "../../../ts/interfaces";
-import { InferValueTypes } from "../../../ts/customTypes";
+import { TableState } from "@ts/interfaces";
+import { InferValueTypes } from "@ts/customTypes";
 
 import {
   initialize,
   toggle,
   setOrdersSuccess,
   setOrderItemSuccess,
-} from "../../table";
+} from "@utils/table";
 
 export const TOGGLE_ROW = "orders/table/TOGGLE_ROW";
 

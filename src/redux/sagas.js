@@ -7,7 +7,7 @@ import {
   FETCH_ORDER_ITEM,
   fetchOrderItemSuccess,
   fetchOrdersFail,
-} from "./modules/tableOrders";
+} from "./tableOrders";
 
 function* fetchOrders(action) {
   const { id } = action;

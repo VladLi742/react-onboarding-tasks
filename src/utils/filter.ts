@@ -6,7 +6,7 @@ import {
   InitializeFilterAction,
   ChangeFilterAction,
   ShowErrorFilterAction,
-} from "../ts/interfaces";
+} from "@ts/interfaces";
 
 function initialize(state: FilterState, action: InitializeFilterAction) {
   const { id } = action;
