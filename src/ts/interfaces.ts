@@ -75,7 +75,7 @@ export interface TableRowProps {
   isExpandable: boolean;
 }
 
-export interface InitializeAction {
+export interface InitializeTableAction {
   readonly type: string;
   id: string;
 }

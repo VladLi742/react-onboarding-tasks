@@ -2,7 +2,7 @@ import { cloneDeep } from "lodash";
 
 import {
   TableState,
-  InitializeAction,
+  InitializeTableAction,
   ToggleRowAction,
   FetchOrdersSuccessAction,
   FetchOrderItemSuccessAction,
@@ -10,7 +10,7 @@ import {
 
 import { updateObject } from "./functions";
 
-function initialize(state: TableState, action: InitializeAction) {
+function initialize(state: TableState, action: InitializeTableAction) {
   const newState = cloneDeep(state);
   newState.instances.push({ id: action.id, rows: [] });
   return updateObject(state, newState);
