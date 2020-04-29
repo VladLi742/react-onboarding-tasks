@@ -14,6 +14,12 @@ export interface FilterState {
 export interface FilterInstance {
   id: string;
   value: string;
+  errMessage: string;
+}
+
+export interface InitializeFilterAction {
+  readonly type: string;
+  id: string;
 }
 
 export interface ChangeFilterAction {
@@ -22,11 +28,24 @@ export interface ChangeFilterAction {
   value: string;
 }
 
+export interface ShowErrorFilterAction {
+  readonly type: string;
+  id: string;
+  message: string;
+}
+
 export interface FilterProps {
   id: string;
   defaultValue?: string;
   label: string;
   onChange: Function;
+  validationRules: ValidationRules;
+  placeholder: string;
+}
+
+export interface ValidationRules {
+  regExp: RegExp;
+  message: string;
 }
 
 // ----- Table -----

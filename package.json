@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "start": "webpack-dev-server --config webpack.dev.js",
+    "test": "jest",
     "build": "webpack --config webpack.prod.js"
   },
   "keywords": [],
@@ -12,6 +13,7 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.9.0",
+    "@babel/plugin-transform-runtime": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
     "@babel/preset-react": "^7.9.4",
     "@babel/preset-typescript": "^7.9.0",
@@ -32,6 +34,7 @@
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.2.0",
     "husky": "^4.2.5",
+    "jest": "^25.4.0",
     "prettier": "^2.0.5",
     "prettier-webpack-plugin": "^1.2.0",
     "pretty-quick": "^2.0.1",
@@ -51,6 +54,7 @@
     "@types/styled-components": "^5.1.0",
     "lodash": "^4.17.15",
     "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
@@ -61,6 +65,11 @@
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "jest": {
+    "globals": {
+      "API_HOST": "http://127.0.0.1:8080/api/"
     }
   }
 }

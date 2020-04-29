@@ -7,6 +7,11 @@ import { fetchOrders } from "../redux/modules/tableOrders";
 
 import Filter from "../utils/components/Filter";
 
+const validationRules = {
+  regExp: new RegExp(/^ord-\d*$/, "i"),
+  message: "Неправильный формат",
+};
+
 export default function FilterOrders() {
   const ms = 1000;
   const dispatch = useDispatch();
@@ -16,6 +21,12 @@ export default function FilterOrders() {
   );
 
   return (
-    <Filter id="filter-orders" onChange={callback} label="Фильтр заказов" />
+    <Filter
+      id="filter-orders"
+      validationRules={validationRules}
+      placeholder="ORD-Номер заказа"
+      onChange={callback}
+      label="Фильтр заказов"
+    />
   );
 }
