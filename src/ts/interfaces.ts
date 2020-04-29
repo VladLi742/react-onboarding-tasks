@@ -38,9 +38,17 @@ export interface FilterProps {
   id: string;
   defaultValue?: string;
   label: string;
-  onChange: Function;
+  onChangeCallback: Function;
   validationRules: ValidationRules;
   placeholder: string;
+}
+
+export interface FilterOrdersProps {
+  id: string;
+  validationRules: ValidationRules;
+  placeholder: string;
+  onChangeCallback: Function;
+  label: string;
 }
 
 export interface ValidationRules {
@@ -57,6 +65,7 @@ export interface TableState {
 export interface TableInstance {
   id: string;
   rows: TableRowData[];
+  isLoading: boolean;
 }
 
 export interface TableUIData {
@@ -81,7 +90,16 @@ export interface TableProps {
   id: string;
   headers: TableUIData[];
   subHeaders: TableUIData[];
-  data: TableInstance;
+  instance: TableInstance;
+  type: string;
+  isExpandable: boolean;
+}
+
+export interface TableOrdersProps {
+  id: string;
+  headers: TableUIData[];
+  subHeaders: TableUIData[];
+  instance: TableInstance;
   type: string;
   isExpandable: boolean;
 }
@@ -112,6 +130,11 @@ export interface Order {
   docDate: string;
   docNum: number;
   description: string;
+}
+
+export interface FetchOrdersAction {
+  readonly type: string;
+  id: string;
 }
 
 export interface FetchOrdersSuccessAction {

@@ -1,22 +1,13 @@
-import { useCallback, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useCallback } from "react";
+import { useDispatch } from "react-redux";
 
 import { toggleRow } from "@redux/table";
 import { fetchOrders, fetchOrderItem } from "@redux/tableOrders";
 
-import { AppState } from "@ts/interfaces";
-
 export function useFetchOrders(id: string) {
   const dispatch = useDispatch();
-  const instance = useSelector((state: AppState) =>
-    state.table.instances.find((instance) => instance.id === id)
-  );
 
-  useEffect(() => {
-    if (!instance) dispatch(fetchOrders(id));
-  }, [dispatch, instance, id]);
-
-  return instance;
+  return useCallback(() => dispatch(fetchOrders(id)), [dispatch, id]); // eslint-disable-line react-hooks/exhaustive-deps
 }
 
 export function useFetchOrderItem(id: string, orderId: number) {

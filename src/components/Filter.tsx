@@ -14,7 +14,7 @@ export default function Filter(props: FilterProps) {
     defaultValue,
     label,
     placeholder,
-    onChange: onChangeCallback,
+    onChangeCallback,
   } = props;
   const dispatch = useDispatch();
   const filter = useSelector((state: AppState) =>

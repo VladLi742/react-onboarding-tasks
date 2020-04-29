@@ -8,39 +8,36 @@ import {
 import { TableState } from "@ts/interfaces";
 import { InferValueTypes } from "@ts/customTypes";
 
+import { initialize, toggle } from "@utils/table";
 import {
-  initialize,
-  toggle,
+  fetchOrders,
   setOrdersSuccess,
   setOrderItemSuccess,
-} from "@utils/table";
+} from "@utils/tableOrders";
 
+export const INITIALIZE_TABLE = "orders/table/INITIALIZE_TABLE";
 export const TOGGLE_ROW = "orders/table/TOGGLE_ROW";
 
+export const initializeTable = (id: string) =>
+  ({ type: INITIALIZE_TABLE, id } as const);
+
 export const toggleRow = (id: string, rowId: number) =>
-  ({
-    type: TOGGLE_ROW,
-    id,
-    rowId,
-  } as const);
+  ({ type: TOGGLE_ROW, id, rowId } as const);
 
-const initialState: TableState = {
-  instances: [],
-};
-
-const actions = {
-  toggleRow,
-  ...tableOrdersActions,
-};
+const actions = { initializeTable, toggleRow, ...tableOrdersActions };
 
 type Action = ReturnType<InferValueTypes<typeof actions>>;
 
+const initialState: TableState = { instances: [] };
+
 export const reducer = (state = initialState, action: Action) => {
   switch (action.type) {
+    case INITIALIZE_TABLE:
+      return initialize(state, action);
     case TOGGLE_ROW:
       return toggle(state, action);
     case FETCH_ORDERS:
-      return initialize(state, action);
+      return fetchOrders(state, action);
     case FETCH_ORDERS_SUCCESS:
       return setOrdersSuccess(state, action);
     case FETCH_ORDER_ITEM_SUCCESS:

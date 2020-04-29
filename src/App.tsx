@@ -8,8 +8,8 @@ import { store, persistor } from "@redux/store";
 
 import GlobalStyles from "./globalStyles";
 
-import FilterOrders from "@components/FilterOrders";
-import TableOrders from "@components/TableOrders";
+import FilterOrders from "@components/containers/FilterOrders";
+import TableOrders from "@components/containers/TableOrders";
 
 function App() {
   return (
