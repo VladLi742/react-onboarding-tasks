@@ -43,7 +43,7 @@ export default function TableRow(props: TableRowProps) {
       </TableRowMaterial>
       {row.items && isOpen && (
         <TableRowMaterial>
-          <TableCell padding="none" colSpan={4}>
+          <TableCell padding="none" colSpan={subHeaders.length}>
             <Table>
               <TableHead>
                 <TableRowMaterial>
