@@ -5,7 +5,6 @@ import {
   FilterState,
   InitializeFilterAction,
   ChangeFilterAction,
-  ShowErrorFilterAction,
 } from "@ts/interfaces";
 
 function initialize(state: FilterState, action: InitializeFilterAction) {
@@ -19,26 +18,8 @@ function change(state: FilterState, action: ChangeFilterAction) {
   const { id, value } = action;
   const newState = cloneDeep(state);
   const filter = newState.instances.find((instance) => instance.id === id);
-  if (filter) {
-    filter.value = value;
-    filter.errMessage = "";
-  }
+  if (filter) filter.value = value;
   return updateObject(state, newState);
 }
 
-function showError(state: FilterState, action: ShowErrorFilterAction) {
-  const { id, message } = action;
-  const newState = cloneDeep(state);
-  const filter = newState.instances.find((instance) => instance.id === id);
-  if (filter) {
-    if (filter.value) {
-      filter.errMessage = message;
-    } else {
-      filter.value = "";
-      filter.errMessage = "";
-    }
-  }
-  return updateObject(state, newState);
-}
-
-export { initialize, change, showError };
+export { initialize, change };

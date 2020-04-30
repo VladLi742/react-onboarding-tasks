@@ -5,14 +5,13 @@ import { FilterOrdersProps } from "@ts/interfaces";
 import Filter from "@components/Filter";
 
 export default function FilterOrders(props: FilterOrdersProps) {
-  const { id, validationRules, placeholder, onChangeCallback, label } = props;
+  const { id, onChangeCallback, label, instance } = props;
   return (
     <Filter
       id={id}
-      validationRules={validationRules}
-      placeholder={placeholder}
       onChangeCallback={onChangeCallback}
       label={label}
+      instance={instance}
     />
   );
 }

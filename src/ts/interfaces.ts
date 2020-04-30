@@ -28,30 +28,30 @@ export interface ChangeFilterAction {
   value: string;
 }
 
-export interface ShowErrorFilterAction {
-  readonly type: string;
-  id: string;
-  message: string;
-}
-
 export interface FilterProps {
   id: string;
   defaultValue?: string;
   label: string;
-  onChangeCallback: Function;
-  validationRules: ValidationRules;
-  placeholder: string;
+  onChangeCallback?: Function;
+  validationRules?: ValidationRule[];
+  placeholder?: string;
+  instance: FilterInstance;
+}
+
+export interface FilterValues {
+  filter: string;
 }
 
 export interface FilterOrdersProps {
   id: string;
-  validationRules: ValidationRules;
-  placeholder: string;
+  validationRules?: ValidationRule[];
+  placeholder?: string;
   onChangeCallback: Function;
   label: string;
+  instance: FilterInstance;
 }
 
-export interface ValidationRules {
+export interface ValidationRule {
   regExp: RegExp;
   message: string;
 }
