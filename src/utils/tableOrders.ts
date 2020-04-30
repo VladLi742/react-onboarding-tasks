@@ -12,7 +12,7 @@ import { updateObject } from "@utils/functions";
 export function fetchOrders(state: TableState, action: FetchOrdersAction) {
   const newState = cloneDeep(state);
   const instance = newState.instances.find(
-    (instance) => instance.instanceId === action.instanceId
+    (instance) => instance.id === action.instanceId
   );
   if (instance) instance.isLoading = true;
   return updateObject(state, newState);
@@ -36,7 +36,7 @@ export function setOrdersSuccess(
     };
   });
   const instance = newState.instances.find(
-    (instance) => instance.instanceId === action.instanceId
+    (instance) => instance.id === action.instanceId
   );
   if (instance) {
     instance.rows = rows;
@@ -51,7 +51,7 @@ export function setOrderItemSuccess(
 ) {
   const newState = cloneDeep(state);
   const instance = newState.instances.find(
-    (instance) => instance.instanceId === action.instanceId
+    (instance) => instance.id === action.instanceId
   );
   if (instance) {
     const { orderId, items } = action.payload;

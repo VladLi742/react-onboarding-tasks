@@ -19,16 +19,13 @@ export default function Container() {
     []
   );
   const instance = useSelector((state: AppState) =>
-    state.filter.instances.find(
-      (instance) => instance.instanceId === instanceId
-    )
+    state.filter.instances.find((instance) => instance.id === instanceId)
   );
   if (!instance) {
     dispatch(initializeFilter(instanceId));
   } else {
     return (
       <FilterOrders
-        instanceId={instanceId}
         onChangeCallback={onChangeCallback}
         label="Фильтр заказов"
         instance={instance}

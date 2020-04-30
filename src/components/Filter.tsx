@@ -16,6 +16,7 @@ function Component(props: any) {
     onChange,
     instance,
   } = props;
+  console.log(instance);
   const dispatch = useDispatch();
   const handleChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>): void => {

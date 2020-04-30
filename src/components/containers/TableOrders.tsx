@@ -26,7 +26,7 @@ const subHeaders = [
 export default function Container() {
   const instanceId = "table-orders";
   const instance = useSelector((state: AppState) =>
-    state.table.instances.find((instance) => instance.instanceId === instanceId)
+    state.table.instances.find((instance) => instance.id === instanceId)
   );
   const dispatch = useDispatch();
   const fetchOrders = useFetchOrders(instanceId);

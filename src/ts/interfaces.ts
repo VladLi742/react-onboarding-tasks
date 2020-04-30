@@ -12,7 +12,7 @@ export interface FilterState {
 }
 
 export interface FilterInstance {
-  instanceId: string;
+  id: string;
   value: string;
   errMessage: string;
 }
@@ -29,7 +29,6 @@ export interface ChangeFilterAction {
 }
 
 export interface FilterProps {
-  instanceId: string;
   defaultValue?: string;
   label: string;
   onChangeCallback?: Function;
@@ -43,7 +42,6 @@ export interface FilterValues {
 }
 
 export interface FilterOrdersProps {
-  instanceId: string;
   validationRules?: ValidationRule[];
   placeholder?: string;
   onChangeCallback: Function;
@@ -63,7 +61,7 @@ export interface TableState {
 }
 
 export interface TableInstance {
-  instanceId: string;
+  id: string;
   rows: TableRowData[];
   isLoading: boolean;
 }

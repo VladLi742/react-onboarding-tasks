@@ -11,7 +11,7 @@ import { updateObject } from "@utils/functions";
 function initialize(state: TableState, action: InitializeTableAction) {
   const newState = cloneDeep(state);
   newState.instances.push({
-    instanceId: action.instanceId,
+    id: action.instanceId,
     rows: [],
     isLoading: false,
   });
@@ -21,7 +21,7 @@ function initialize(state: TableState, action: InitializeTableAction) {
 function toggle(state: TableState, action: ToggleRowAction) {
   const newState = cloneDeep(state);
   const instance = newState.instances.find(
-    (instance) => instance.instanceId === action.instanceId
+    (instance) => instance.id === action.instanceId
   );
   if (instance) {
     const row = instance.rows.find((row) => row.id === action.rowId);
