@@ -1,3 +1,4 @@
+const dotenv = require("dotenv").config({ path: __dirname + "/.env" });
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -47,7 +48,7 @@ module.exports = {
       favicon: "./src/favicon.png",
     }),
     new webpack.DefinePlugin({
-      API_HOST: JSON.stringify("http://127.0.0.1:8080/api/"),
+      "process.env": JSON.stringify(dotenv.parsed),
     }),
   ],
   optimization: {

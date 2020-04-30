@@ -15,7 +15,7 @@ function* fetchOrders(action) {
     state.filter.instances.find((instance) => instance.id === "filter-orders")
   );
   const filter = filterInstance ? `?filter=${filterInstance.value}` : "";
-  const url = `${API_HOST}order${filter}`;
+  const url = `${process.env.API_HOST}order${filter}`;
   try {
     const response = yield fetch(url);
     const data = yield response.json();
@@ -27,7 +27,7 @@ function* fetchOrders(action) {
 
 function* fetchOrderItem(action) {
   const { instanceId, orderId } = action;
-  const url = `${API_HOST}order/${orderId}`;
+  const url = `${process.env.API_HOST}order/${orderId}`;
   try {
     const response = yield fetch(url);
     const data = { orderId, items: yield response.json() };
