@@ -12,21 +12,23 @@ export const FETCH_ORDER_ITEM_SUCCESS = "orders/table/FETCH_ORDER_ITEM:SUCCESS";
 export const FETCH_ORDER_ITEM_FAIL = "orders/table/FETCH_ORDER_ITEM:FAIL";
 
 // --- fetchOrders ---
-export const fetchOrders = (id: string) =>
-  ({ type: FETCH_ORDERS, id } as const);
+export const fetchOrders = (instanceId: string) =>
+  ({ type: FETCH_ORDERS, instanceId } as const);
 
-export const fetchOrdersSuccess = (id: string, payload: Order[]) =>
-  ({ type: FETCH_ORDERS_SUCCESS, id, payload } as const);
+export const fetchOrdersSuccess = (instanceId: string, payload: Order[]) =>
+  ({ type: FETCH_ORDERS_SUCCESS, instanceId, payload } as const);
 
 export const fetchOrdersFail = (error: Error) =>
   ({ type: FETCH_ORDERS_FAIL, error } as const);
 
 // --- fetchOrderItem ---
-export const fetchOrderItem = (id: string, orderId: number) =>
-  ({ type: FETCH_ORDER_ITEM, id, orderId } as const);
+export const fetchOrderItem = (instanceId: string, orderId: number) =>
+  ({ type: FETCH_ORDER_ITEM, instanceId, orderId } as const);
 
-export const fetchOrderItemSuccess = (id: string, payload: OrderItems) =>
-  ({ type: FETCH_ORDER_ITEM_SUCCESS, id, payload } as const);
+export const fetchOrderItemSuccess = (
+  instanceId: string,
+  payload: OrderItems
+) => ({ type: FETCH_ORDER_ITEM_SUCCESS, instanceId, payload } as const);
 
 export const fetchOrderItemFail = (error: Error) =>
   ({ type: FETCH_ORDER_ITEM_FAIL, error } as const);

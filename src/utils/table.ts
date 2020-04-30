@@ -10,14 +10,18 @@ import { updateObject } from "@utils/functions";
 
 function initialize(state: TableState, action: InitializeTableAction) {
   const newState = cloneDeep(state);
-  newState.instances.push({ id: action.id, rows: [], isLoading: false });
+  newState.instances.push({
+    instanceId: action.instanceId,
+    rows: [],
+    isLoading: false,
+  });
   return updateObject(state, newState);
 }
 
 function toggle(state: TableState, action: ToggleRowAction) {
   const newState = cloneDeep(state);
   const instance = newState.instances.find(
-    (instance) => instance.id === action.id
+    (instance) => instance.instanceId === action.instanceId
   );
   if (instance) {
     const row = instance.rows.find((row) => row.id === action.rowId);

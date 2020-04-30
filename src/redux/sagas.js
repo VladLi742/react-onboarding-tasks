@@ -10,7 +10,7 @@ import {
 } from "@redux/tableOrders";
 
 function* fetchOrders(action) {
-  const { id } = action;
+  const { instanceId: tableId } = action;
   const filterInstance = yield select((state) =>
     state.filter.instances.find((instance) => instance.id === "filter-orders")
   );
@@ -19,19 +19,19 @@ function* fetchOrders(action) {
   try {
     const response = yield fetch(url);
     const data = yield response.json();
-    yield put(fetchOrdersSuccess(id, data));
+    yield put(fetchOrdersSuccess(tableId, data));
   } catch (error) {
     yield put(fetchOrdersFail(error));
   }
 }
 
 function* fetchOrderItem(action) {
-  const { id, orderId } = action;
+  const { instanceId, orderId } = action;
   const url = `${API_HOST}order/${orderId}`;
   try {
     const response = yield fetch(url);
     const data = { orderId, items: yield response.json() };
-    yield put(fetchOrderItemSuccess(id, data));
+    yield put(fetchOrderItemSuccess(instanceId, data));
   } catch (error) {
     yield put(fetchOrderItemFail(error));
   }

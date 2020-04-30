@@ -18,11 +18,11 @@ import {
 export const INITIALIZE_TABLE = "orders/table/INITIALIZE_TABLE";
 export const TOGGLE_ROW = "orders/table/TOGGLE_ROW";
 
-export const initializeTable = (id: string) =>
-  ({ type: INITIALIZE_TABLE, id } as const);
+export const initializeTable = (instanceId: string) =>
+  ({ type: INITIALIZE_TABLE, instanceId } as const);
 
-export const toggleRow = (id: string, rowId: number) =>
-  ({ type: TOGGLE_ROW, id, rowId } as const);
+export const toggleRow = (instanceId: string, rowId: number) =>
+  ({ type: TOGGLE_ROW, instanceId, rowId } as const);
 
 const actions = { initializeTable, toggleRow, ...tableOrdersActions };
 

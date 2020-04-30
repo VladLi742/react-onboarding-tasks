@@ -14,10 +14,10 @@ import { TableUIData, TableItemUiData, TableRowProps } from "@ts/interfaces";
 import { useFetchOrderItem, useToggleRow } from "@utils/useHooks";
 
 export default function TableRow(props: TableRowProps) {
-  const { tableId, subHeaders, row, type, isExpandable } = props;
+  const { instanceId, subHeaders, row, type, isExpandable } = props;
   const { id, items, isOpen } = row;
-  const fetchOrderItem = useFetchOrderItem(tableId, id);
-  const toggleRow = useToggleRow(tableId, id);
+  const fetchOrderItem = useFetchOrderItem(instanceId, id);
+  const toggleRow = useToggleRow(instanceId, id);
 
   const handleOpen = () => {
     toggleRow();

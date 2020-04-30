@@ -12,24 +12,24 @@ export interface FilterState {
 }
 
 export interface FilterInstance {
-  id: string;
+  instanceId: string;
   value: string;
   errMessage: string;
 }
 
 export interface InitializeFilterAction {
   readonly type: string;
-  id: string;
+  instanceId: string;
 }
 
 export interface ChangeFilterAction {
   readonly type: string;
-  id: string;
+  instanceId: string;
   value: string;
 }
 
 export interface FilterProps {
-  id: string;
+  instanceId: string;
   defaultValue?: string;
   label: string;
   onChangeCallback?: Function;
@@ -43,7 +43,7 @@ export interface FilterValues {
 }
 
 export interface FilterOrdersProps {
-  id: string;
+  instanceId: string;
   validationRules?: ValidationRule[];
   placeholder?: string;
   onChangeCallback: Function;
@@ -63,7 +63,7 @@ export interface TableState {
 }
 
 export interface TableInstance {
-  id: string;
+  instanceId: string;
   rows: TableRowData[];
   isLoading: boolean;
 }
@@ -87,7 +87,7 @@ export interface TableItemUiData {
 }
 
 export interface TableProps {
-  id: string;
+  instanceId: string;
   headers: TableUIData[];
   subHeaders: TableUIData[];
   instance: TableInstance;
@@ -96,7 +96,7 @@ export interface TableProps {
 }
 
 export interface TableOrdersProps {
-  id: string;
+  instanceId: string;
   headers: TableUIData[];
   subHeaders: TableUIData[];
   instance: TableInstance;
@@ -105,7 +105,7 @@ export interface TableOrdersProps {
 }
 
 export interface TableRowProps {
-  tableId: string;
+  instanceId: string;
   subHeaders: TableUIData[];
   row: TableRowData;
   type: string;
@@ -114,12 +114,12 @@ export interface TableRowProps {
 
 export interface InitializeTableAction {
   readonly type: string;
-  id: string;
+  instanceId: string;
 }
 
 export interface ToggleRowAction {
   readonly type: string;
-  id: string;
+  instanceId: string;
   rowId: number;
 }
 
@@ -134,12 +134,12 @@ export interface Order {
 
 export interface FetchOrdersAction {
   readonly type: string;
-  id: string;
+  instanceId: string;
 }
 
 export interface FetchOrdersSuccessAction {
   readonly type: string;
-  id: string;
+  instanceId: string;
   payload: Order[];
 }
 
@@ -160,6 +160,6 @@ export interface OrderItems {
 
 export interface FetchOrderItemSuccessAction {
   readonly type: string;
-  id: string;
+  instanceId: string;
   payload: OrderItems;
 }

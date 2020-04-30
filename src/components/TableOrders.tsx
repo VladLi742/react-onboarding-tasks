@@ -5,10 +5,17 @@ import { TableOrdersProps } from "@ts/interfaces";
 import Table from "@components/Table";
 
 export default function TableOrders(props: TableOrdersProps) {
-  const { id, headers, subHeaders, instance, type, isExpandable } = props;
+  const {
+    instanceId,
+    headers,
+    subHeaders,
+    instance,
+    type,
+    isExpandable,
+  } = props;
   return (
     <Table
-      id={id}
+      instanceId={instanceId}
       headers={headers}
       subHeaders={subHeaders}
       instance={instance}

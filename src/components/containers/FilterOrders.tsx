@@ -11,7 +11,7 @@ import { initializeFilter } from "@redux/filter";
 import { LinearProgress } from "@material-ui/core";
 
 export default function Container() {
-  const defaultId = "filter-orders";
+  const instanceId = "filter-orders";
   const ms = 1000;
   const dispatch = useDispatch();
   const onChangeCallback = useCallback(
@@ -19,14 +19,16 @@ export default function Container() {
     []
   );
   const instance = useSelector((state: AppState) =>
-    state.filter.instances.find((instance) => instance.id === defaultId)
+    state.filter.instances.find(
+      (instance) => instance.instanceId === instanceId
+    )
   );
   if (!instance) {
-    dispatch(initializeFilter(defaultId));
+    dispatch(initializeFilter(instanceId));
   } else {
     return (
       <FilterOrders
-        id={defaultId}
+        instanceId={instanceId}
         onChangeCallback={onChangeCallback}
         label="Фильтр заказов"
         instance={instance}

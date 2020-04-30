@@ -12,7 +12,14 @@ import { TableProps, TableUIData, TableRowData } from "@ts/interfaces";
 import TableRow from "@components/TableRow";
 
 export default function Table(props: TableProps) {
-  const { id, headers, subHeaders, instance, type, isExpandable } = props;
+  const {
+    instanceId,
+    headers,
+    subHeaders,
+    instance,
+    type,
+    isExpandable,
+  } = props;
   return (
     <TableMaterial>
       <TableHead>
@@ -26,7 +33,7 @@ export default function Table(props: TableProps) {
       <TableBody>
         {instance.rows.map((row: TableRowData) => (
           <TableRow
-            tableId={id}
+            instanceId={instanceId}
             subHeaders={subHeaders}
             row={row}
             isExpandable={isExpandable}

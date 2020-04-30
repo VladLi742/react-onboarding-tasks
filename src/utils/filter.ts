@@ -8,16 +8,18 @@ import {
 } from "@ts/interfaces";
 
 function initialize(state: FilterState, action: InitializeFilterAction) {
-  const { id } = action;
+  const { instanceId } = action;
   const newState = cloneDeep(state);
-  newState.instances.push({ id, value: "", errMessage: "" });
+  newState.instances.push({ instanceId, value: "", errMessage: "" });
   return updateObject(state, newState);
 }
 
 function change(state: FilterState, action: ChangeFilterAction) {
-  const { id, value } = action;
+  const { instanceId, value } = action;
   const newState = cloneDeep(state);
-  const filter = newState.instances.find((instance) => instance.id === id);
+  const filter = newState.instances.find(
+    (instance) => instance.instanceId === instanceId
+  );
   if (filter) filter.value = value;
   return updateObject(state, newState);
 }

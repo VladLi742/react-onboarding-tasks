@@ -24,20 +24,20 @@ const subHeaders = [
 ];
 
 export default function Container() {
-  const id = "table-orders";
+  const instanceId = "table-orders";
   const instance = useSelector((state: AppState) =>
-    state.table.instances.find((instance) => instance.id === id)
+    state.table.instances.find((instance) => instance.instanceId === instanceId)
   );
   const dispatch = useDispatch();
-  const fetchOrders = useFetchOrders(id);
+  const fetchOrders = useFetchOrders(instanceId);
 
   if (!instance) {
-    dispatch(initializeTable(id));
+    dispatch(initializeTable(instanceId));
   } else if (!instance.isLoading) {
     if (instance.rows.length) {
       return (
         <TableOrders
-          id={id}
+          instanceId={instanceId}
           headers={headers}
           subHeaders={subHeaders}
           instance={instance}
