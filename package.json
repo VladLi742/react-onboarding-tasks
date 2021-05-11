@@ -46,7 +46,7 @@
   "dependencies": {
     "@hot-loader/react-dom": "^16.13.0",
     "@types/styled-components": "^5.1.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "react": "^16.13.1",
     "styled-components": "^5.1.0"
   },
